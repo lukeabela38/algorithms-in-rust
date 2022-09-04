@@ -1,6 +1,6 @@
 fn main() {
     
-    let a = [6, 5, 4, 3, 2, 1];
+    let a = [9, 8, 7, 6, 5, 4, 3, 1, 2];
 
     let mut b = a;
     selection_sort(&mut b);
@@ -28,9 +28,17 @@ fn main() {
         println!("{x}");
     }
 
-    unsafe {
-        println!("Inversion: {INVERSIONS}");
-    }
+    let mut e = a;
+    let r = e.len() - 1;
+    let l = 0;
+
+    quick_sort(l, r, &mut e);
+
+    println!("Quick Sort");
+    for i in 0..a.len() {
+        let x = e[i];
+        println!("{x}");
+    }   
 
 }
 
@@ -123,4 +131,37 @@ fn merge_sort(vec: Vec<usize>) -> Vec<usize> {
     }
 
     vec
+}
+
+fn quick_sort(l: usize, r: usize, arr: &mut [usize]) -> usize{
+    
+    if arr.len() == 1 {
+        return 0;
+    }
+
+    if l < r {
+        let pi = partition(l, r, arr);
+        quick_sort(l, pi - 1, arr);
+        quick_sort(pi + 1, r, arr);
+    }
+
+    return 0;
+}
+
+fn partition(l: usize, r: usize, arr: &mut [usize]) -> usize {
+
+    let pivot = arr[r];
+    let mut ptr = l;
+
+
+    for i in l..r {
+        if arr[i] <= pivot {
+            arr.swap(i, ptr);
+            ptr += 1;
+        }
+    }
+
+    arr.swap(r, ptr);
+
+    return ptr
 }
