@@ -19,3 +19,7 @@ Tests are functions to verify that non-test code is functioning in the expected 
 A test in Rust is a function that is annotated with the test attribute. Attributes are metadata about pieces of Rust code - one example is the dervice attribute. To change a function into a test function, we need to add #[test] on the line above the function signature. 
 
 You can then execute using cargo test.
+
+## Want to know more?
+
+Check out my blog [here](https://blog.devgenius.io/rust-for-dummies-idiots-beginners-and-everyone-else-part-0-introduction-setup-323653658c6).
